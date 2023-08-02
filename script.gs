@@ -2,7 +2,7 @@ function myFunction() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var s = ss.getActiveSheet();
   var c = s.getActiveCell();
-  var folderId = "10dsZQSopgXw8_wDtjSgt61Grlnx0EDGi";
+  var folderId = "ID HERE";
   var fldr = DriveApp.getFolderById(folderId);
   var files = fldr.getFiles();
   var links = [];
