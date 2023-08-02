@@ -2,14 +2,18 @@ function myFunction() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
   var s = ss.getActiveSheet();
   var c = s.getActiveCell();
-  var fldr = DriveApp.getFolderById("ID HERE IN QUOTES");
+  var folderId = "10dsZQSopgXw8_wDtjSgt61Grlnx0EDGi";
+  var fldr = DriveApp.getFolderById(folderId);
   var files = fldr.getFiles();
-  var names = [];
+  var links = [];
+  
   while (files.hasNext()) {
-    var f = files.next();
-    var name = f.getName();
-    var url = f.getUrl();
-    names.push([name, url]);
+    var file = files.next();
+    var name = file.getName();
+    var fileId = file.getId(); // Get the file ID
+    var downloadLink = "https://drive.google.com/uc?id=" + fileId + "&export=download";
+    links.push([name, downloadLink]);
   }
-  s.getRange(c.getRow(), c.getColumn(), names.length, names[0].length).setValues(names);
+  
+  s.getRange(c.getRow(), c.getColumn(), links.length, links[0].length).setValues(links);
 }
